@@ -1,0 +1,41 @@
+{
+  "name": "pm2-custom-log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pm2",
+    "discord"
+  ],
+  "author": "Francisco and custom by swe louis",
+  "license": "ISC",
+  "dependencies": {
+    "pm2": "^5.4.3",
+    "pmx": "^1.6.7",
+    "request": "^2.88.2",
+    "strip-ansi": "^6.0.0"
+  },
+  "config": {
+    "discord_url": null,
+    "process_name": null,
+    "without_keywords": null,
+    "include_keywords": null,
+    "log": false,
+    "error": true,
+    "kill": true,
+    "exception": true,
+    "restart": true,
+    "delete": false,
+    "stop": true,
+    "restart overlimit": true,
+    "exit": false,
+    "start": false,
+    "online": false,
+    "buffer": true,
+    "buffer_seconds": 1,
+    "queue_max": 100
+  }
+}

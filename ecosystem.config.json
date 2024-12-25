@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "pm2-custom-log",
+      "script": "index.js",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "time": true
+    }
+  ]
+}
