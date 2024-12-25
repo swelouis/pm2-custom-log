@@ -38,7 +38,7 @@ You can simply turn these on and off by setting them to true or false using the 
 The following options are available:
 
 -   **process_name** (string): When this is set, it outputs only the logs of specific named processes. Default: NULL. You can specify multiple process names separated by commas, e.g., `service_1, service_2`
--   **without_keywords** (string): When this is set, it excludes logs containing specific keywords in the message. You can specify multiple process names separated by commas, e.g., `error_1,health-check`
+-   **exclude_keywords** (string): When this is set, it excludes logs containing specific keywords in the message. You can specify multiple keywords separated by commas, e.g., `error_1,health-check`
 -   **include_keywords** (string): When this is set, it outputs only the logs containing specific keywords in the message. You can specify multiple keywords separated by commas, e.g., `error_1,health-check`
 -   **buffer** (bool) - Enable/Disable buffering of messages by timestamp. Messages that occur with the same timestamp (seconds) will be concatenated together and posted as a single discord message. `Default: true`
 -   **buffer_seconds** (int) - Duration in seconds to aggregate messages. Has no effect if buffer is set to false. `Min: 1, Max: 5, Default: 1`

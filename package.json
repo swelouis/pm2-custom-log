@@ -21,7 +21,7 @@
   "config": {
     "discord_url": null,
     "process_name": null,
-    "without_keywords": null,
+    "exclude_keywords": null,
     "include_keywords": null,
     "log": false,
     "error": true,

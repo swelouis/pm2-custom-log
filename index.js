@@ -134,10 +134,10 @@ function createMessage(data, eventName, altDescription) {
     return;
   }
 
-  if (conf.without_keywords !== null) {
-    var without_keywords = conf.without_keywords.split(",");
-    for (var i = 0; i < without_keywords.length; i++) {
-      if (data.data.includes(without_keywords[i])) {
+  if (conf.exclude_keywords !== null) {
+    var exclude_keywords = conf.exclude_keywords.split(",");
+    for (var i = 0; i < exclude_keywords.length; i++) {
+      if (data.data.includes(exclude_keywords[i])) {
         console.log("Data contains keyword");
         return;
       }
