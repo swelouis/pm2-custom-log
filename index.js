@@ -134,28 +134,30 @@ function createMessage(data, eventName, altDescription) {
     return;
   }
 
-  if (conf.exclude_keywords !== null) {
-    var exclude_keywords = conf.exclude_keywords.split(",");
-    for (var i = 0; i < exclude_keywords.length; i++) {
-      if (data.data.includes(exclude_keywords[i])) {
-        console.log("Data contains keyword");
+  if (data.data) {
+    if (conf.exclude_keywords !== null) {
+      var exclude_keywords = conf.exclude_keywords.split(",");
+      for (var i = 0; i < exclude_keywords.length; i++) {
+        if (data.data.includes(exclude_keywords[i])) {
+          console.log("Data contains keyword");
+          return;
+        }
+      }
+    }
+
+    if (conf.include_keywords !== null) {
+      var include_keywords = conf.include_keywords.split(",");
+      var found = false;
+      for (var i = 0; i < include_keywords.length; i++) {
+        if (data.data.includes(include_keywords[i])) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        console.log("Data does not contain keyword");
         return;
       }
-    }
-  }
-
-  if (conf.include_keywords !== null) {
-    var include_keywords = conf.include_keywords.split(",");
-    var found = false;
-    for (var i = 0; i < include_keywords.length; i++) {
-      if (data.data.includes(include_keywords[i])) {
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      console.log("Data does not contain keyword");
-      return;
     }
   }
 
@@ -164,12 +166,6 @@ function createMessage(data, eventName, altDescription) {
     msg = JSON.stringify(msg);
   }
 
-  messages.push({
-    name: data.process.name,
-    event: eventName,
-    description: stripAnsi(msg),
-    timestamp: Math.floor(Date.now() / 1000),
-  });
 }
 
 // Start listening on the PM2 BUS
