@@ -15,8 +15,7 @@
   "dependencies": {
     "pm2": "^5.4.3",
     "pmx": "^1.6.7",
-    "request": "^2.88.2",
-    "strip-ansi": "^6.0.0"
+    "request": "^2.88.2"
   },
   "config": {
     "discord_url": null,

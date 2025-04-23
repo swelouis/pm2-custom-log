@@ -2,7 +2,6 @@
 var pm2 = require('pm2');
 var pmx = require('pmx');
 var request = require('request');
-var stripAnsi = require('strip-ansi');
 
 // Get the configuration from PM2
 var conf = pmx.initModule();
@@ -27,7 +26,7 @@ var suppressed = {
 // Function to send event to Discord's Incoming Webhook
 function sendToDiscord(message) {
 
-  var description = message.description;
+  var description = `${message.name} - ${message.event}: ${message.description}`;
 
   // If a Discord URL is not set, we do not want to continue and nofify the user that it needs to be set
   if (!conf.discord_url) {
@@ -127,7 +126,6 @@ function createMessage(data, eventName, altDescription) {
     return;
   }
 
-  console.log(conf);
   console.log("data.process.name", data.process.name);
   if (conf.process_name !== null && !conf.process_name.split(",").includes(data.process.name)) {
     console.log("Process name not in list");
@@ -165,6 +163,13 @@ function createMessage(data, eventName, altDescription) {
   if (typeof msg === "object") {
     msg = JSON.stringify(msg);
   }
+
+  messages.push({
+    name: data.process.name,
+    event: eventName,
+    description: msg,
+    timestamp: Math.floor(Date.now() / 1000),
+  });
 
 }
 
